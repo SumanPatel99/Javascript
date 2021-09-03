@@ -1,0 +1,65 @@
+<script>
+class BankAccount {
+    constructor(balance = 0) {
+      this.balance = balance;
+    }
+    depositAmount(amount) {
+      this.balance += amount;
+      console.log(`Deposited ${amount} Total balance ${this.balance}`);
+    }
+  
+    withdrawAmount(amount) {
+      if (this.balance - amount >= BankAccount.overdraftLimit) {
+        this.balance -= amount;
+        console.log("Widhdrawn");
+      }
+    }
+  
+    toString() {
+      return `Balance ${this.balance}`;
+    }
+  }
+  
+  BankAccount.overdraftLimit = -500;
+  
+  let Action = Object.freeze({
+    deposit: 1,
+    withdraw: 2,
+  });
+
+  class BankAccountCommand {
+  constructor(account, action, amount) {
+    this.account = account;
+    this.action = action;
+    this.amount = amount;
+  }
+
+  callAction() {
+    switch (this.action) {
+      case Action.deposit:
+        this.account.depositAmount(this.amount);
+        break;
+      case Action.withdraw:
+        this.account.withdrawAmount(this.amount);
+        break;
+    }
+  }
+
+  undoAction() {
+    switch (this.action) {
+      case Action.deposit:
+        this.account.withdrawAmount(this.amount);
+        break;
+      case Action.withdraw:
+        this.account.depositAmount(this.amount);
+        break;
+    }
+  }
+}
+let bankAccount = new BankAccount(100);
+let cmd = new BankAccountCommand(bankAccount, Action.deposit, 50);
+cmd.callAction();
+console.log(bankAccount.toString());
+cmd.undoAction();
+console.log(bankAccount.toString());
+</script>

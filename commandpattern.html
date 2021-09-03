@@ -1,0 +1,58 @@
+<script>
+
+    var currentBalance = 1000.0;
+
+    function ATM() {
+        var selectOPtion = parseInt(prompt('select a option 1. Balance check 2. Withdraw 3. Exit'))
+        if (selectOPtion === 1) {
+            balance();
+        }
+         else if (selectOPtion === 2) {
+            withdraw();
+        }
+        else if (selectOPtion === 3) {
+            exitToAtm();
+        }
+        else {
+            transactionFailed();
+        }
+    }
+
+
+    function balance() {
+        alert("your current balance is " + currentBalance);
+        ATM();
+    }
+
+    function withdraw() {
+        var withdraw_ = parseFloat(prompt('how much amount you would like to withdraw??'));
+        if (isNaN(withdraw_) || withdraw_ === '') {
+            alert("Please enter a number for amount withdraw!!")
+            withdraw();
+        }
+        else {
+            currentBalance -= withdraw_
+            balance();
+        }
+    }
+
+    // for transaction fail
+    function transactionFailed() {
+        alert('Transaction has been failed and amount has been credited back to your account')
+        ATM();
+    }
+
+    // for exit
+    function exitToAtm() {
+        var exit_ = confirm('confirm you would like to exit ??')
+        if (exit_) {
+            window.close();
+        }
+        else {
+            ATM()
+        }
+    }
+
+    ATM();
+
+</script>

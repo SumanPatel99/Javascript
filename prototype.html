@@ -1,0 +1,17 @@
+<script>
+var myCar= {
+name:"Marcedes benz",
+brake:function(){
+console.log("Stop! I am applying brake.......");
+},
+panic : function (){
+console.log ( "wait!! how to stop this thing?")
+}
+}
+// use objec create to instansiate a new car
+var yourCar= Object.create(myCar);
+//You can now see that one is a prototype of the other
+console.log (yourCar.name);
+yourCar.panic();
+yourCar.brake();
+</script>

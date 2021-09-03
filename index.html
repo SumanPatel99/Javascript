@@ -1,0 +1,47 @@
+
+<html>
+  <head lang="en">
+      <meta charset="UTF-8">
+      <title>Two Way Data Binding</title>
+  </head>
+  <body>
+    Name: <input data-tw-bind="name" type="text">
+    <span data-tw-bind="name"></span><br><br>
+    Surname: <input data-tw-bind="surname" type="text">
+    <span data-tw-bind="surname"></span>
+   
+    <script src="index.js"></script>
+  </body>
+</html>
+
+<!-- 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two way data binding</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <main class="main">
+      <div class="field">
+        <label for="name">Enter your name:</label>
+        <input id="name" type="text" name="name"  data-model="name" />
+      </div>
+
+      <div class="field">
+        <label for="title">Enter your title:</label>
+        <input id="title" type="text" name="title" data-model="title" />
+      </div>
+
+      <div class="results">
+        <h1 data-binding="name"></h1>
+        <h2 data-binding="title"></h2>
+      </div>
+
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html> -->
